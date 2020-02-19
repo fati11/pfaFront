@@ -1,0 +1,66 @@
+ <nav class="navbar navbar-inverse" style="background-color: dimgrey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">CRM</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+            <li class="active"><a routerLink="/prospect"><font color="white"><b>Prospect</b></font></a></li>
+            <li><a routerLink="/contact" ><font ><b>Contact</b></font></a></li>
+            <li><a routerLink="/nouveauProduct" ><font color="white"><b>Produit</b></font></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container spacer">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>Emails</h4>
+        </div>
+        <div class="panel panel-body">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-5">
+                        <input type="nom" class="form-control" placeholder="Nom" [(ngModel)]="motCle"/>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="btn btn-warning" (click)="chercher()"><span class="glyphicon glyphicon-search"></span>  Filter</button>
+                    </div>
+                    <div class="col-md-5">
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th hidden>id</th>
+                    <th>Nom / Prenom</th>
+                    <th>Email</th>
+                    <th>Objet</th>
+                    <th>Texte</th>
+                    <th>Date </th>
+                </tr>
+                <tr *ngFor="let c of pageEmail?.content">
+                    <td hidden>{{c.id}}</td>
+                    <td>{{c.utilisateur.nom+" "+c.utilisateur.prenom}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.subject}}</td>
+                    <td>{{c.texte}}</td>
+                    <td>{{c.date | date : format : timezone }}</td>
+                </tr>
+            </table>
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+                        <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    </div>
+</div>
+

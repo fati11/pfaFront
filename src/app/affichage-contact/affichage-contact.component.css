@@ -1,0 +1,23 @@
+@import "../../assets/css/bootstrap.min.css";
+@import "../../assets/css/styles.css";
+@import "../../assets/css/normalize.min.css";
+@import "../../assets/css/ie.css";
+@import "../../assets/css/etline-font.css";
+@import "../../assets/css/flexslider.css";
+@import "../../assets/bower_components/animate.css/animate.min.css";
+@import "http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+/* Avatar image */
+img.avatar {
+    width: 60%;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+

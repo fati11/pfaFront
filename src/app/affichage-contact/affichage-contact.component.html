@@ -1,0 +1,122 @@
+<head>
+    <meta charset="utf-8"/>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sedna - A Free HTML5/CSS3 website</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+    <link rel="icon" type="/image/png" href="../../assets/favicon-32x32.png"  />
+    <link rel="icon" type="image/png" href="../../assets/favicon-16x16.png"  />
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<div class="hero">
+    <div class="navigation">
+        <header>
+            <div class="header-content">
+                <div class="logo"><a href="#"><img src="../../assets/img/sedna-logo.png" alt="Sedna logo"/></a></div>
+                <div class="header-nav">
+                    <nav>
+                        <ul class="primary-nav">
+                            <li ><a routerLink="/homeAdmin" color="white">Home</a></li>
+                            <li><a routerLink="/prospect" color="white">Prospect</a></li>
+                            <li><a routerLink="/contact" color="white">Contact</a></li>
+                            <li><a routerLink="/nouveauProduct" color="white">Produit</a></li>
+                        </ul>
+                        <ul class="member-actions">
+                            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="navicon">
+                    <a class="nav-toggle" href="#"><span></span></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="height:1.5cm">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <button class="btn btn-warning" (click)="onUpdate()"><span class="glyphicon glyphicon-pencil"></span> Editer</button>
+                            </div>
+                            <div class="col-md-1" style="padding-left: 0.5cm"  >
+                                <button class="btn btn-warning" (click)="onDeleteProspect(c)"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                            </div>
+
+                            <div class="col-md-1" style="padding-left: 1.3cm"  >
+                                <button class="btn btn-warning" ><span class="glyphicon glyphicon-print"></span> Imprimer</button>
+                            </div>
+                            <div class="col-md-1" style="padding-left: 1.9cm"  >
+                                <div class="btn-group" role="group">
+                                    <button type="button" (click)="convert()" class="btn btn-warning dropdown-toggle">
+                                        Convertir to Client
+
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="imgcontainer">
+                                    <img src="../../assets/images/avatar.jpg" alt="avatar" class="avatar">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <h3>{{contact.nom + " "+ contact.prenom}}<span class="glyphicon glyphicon-star"></span></h3>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button class="btn btn-warning" data-toggle="tooltip" title="Mes email" (click)="mesEmails()"><span class="glyphicon glyphicon-envelope"></span></button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-warning"  data-toggle="tooltip" title="Mes Rendez-Vous" (click)="mesRdv()"><span class="glyphicon glyphicon-calendar"></span></button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-warning" data-toggle="tooltip" title="mes affaires" (click)="mesAffaires()" ><span class="glyphicon glyphicon-phone-alt"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading " style="height:1.5cm">
+                    <h3 style="padding-top:-1cm"><span class="glyphicon glyphicon-list"></span>Actions à réaliser</h3>
+                </div>
+                <div class="panel panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <button class="btn btn-warning" (click)="openDialog()" ><span class="glyphicon glyphicon-envelope"></span> Envoyer un Email</button>
+                            </div>
+                            <div class="col-md-1" style="padding-left: 2.5cm"  >
+                                <button class="btn btn-warning" (click)="ajoutRDV()"><span class="glyphicon glyphicon-calendar"></span> Saisir un Rendez-vous</button>
+                            </div>
+
+                            <div class="col-md-1" style="padding-left: 5cm"  >
+                                <button class="btn btn-warning" (click)="ajoutAffaire()"><span class="glyphicon glyphicon-phone-alt"></span> Ajouter une affaire</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>

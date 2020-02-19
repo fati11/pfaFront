@@ -1,0 +1,67 @@
+<div class="form-group">
+    <div class="card border-primary rounded-0">
+        <div class="card-header p-0">
+            <div class="bg-info text-white text-center py-2">
+                <h3><i class="fa fa-envelope"></i>Création rapide d'affaire</h3>
+            </div>
+        </div>
+        <div class="card-body p-3">
+
+            <!--Body-->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label">Nom d'affaire :</label>
+                        <input type="text" class="form-control"  placeholder="nom d'affaire" [(ngModel)]="affaire.nomAffaire"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Relatif à :</label>
+                        <input type="text" class="form-control"  [(ngModel)]="affaire.relatifA"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label">Montant</label>
+                        <input type="text" class="form-control" placeholder="Saisir le montant" [(ngModel)]="affaire.montant"/>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="control-label">Date d'échéance :</label>
+                        <input type="date" class="form-control"   [(ngModel)]="affaire.dateEcheance"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label">Assigné à :</label>
+                        <input type="text" class="form-control"   [(ngModel)]="affaire.assigneA"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Phase de vente :</label>
+                        <select class="form-control"  [(ngModel)]="affaire.phaseVente" >
+                            <option value=prospection>Prospection</option>
+                            <option value=proposition>Proposition</option>
+                            <option value=negociation>Négociation</option>
+                            <option value=gagne>Gagné</option>
+                            <option value=perdu>Perdu</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label">Probabilité:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control"  aria-describedby="basic-addon2" [(ngModel)]="affaire.probabilite"/>
+                            <span class="input-group-addon" id="basic-addon2">%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Envoyer" class="btn btn-info btn-block rounded-0 py-2" (click)="envoyer()">
+            </div>
+        </div>
+
+    </div>
+</div>

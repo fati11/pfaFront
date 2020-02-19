@@ -1,0 +1,36 @@
+<div class="container spacer" style="width: 90rem;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>Emails</h4>
+        </div>
+        <div class="panel panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th hidden>id</th>
+                    <th>Nom / Prenom</th>
+                    <th>Email</th>
+                    <th>Objet</th>
+                    <th>Texte</th>
+                    <th>Date </th>
+                </tr>
+                <tr *ngFor="let c of pageEmail?.content">
+                    <td hidden>{{c.id}}</td>
+                    <td>{{c.utilisateur.nom+" "+c.utilisateur.prenom}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.subject}}</td>
+                    <td>{{c.texte}}</td>
+                    <td>{{c.date | date : format : timezone }}</td>
+                </tr>
+            </table>
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+                        <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    </div>
+</div>

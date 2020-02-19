@@ -1,0 +1,41 @@
+<div class="container spacer" style="width: 90rem;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>Affaires :</h4>
+        </div>
+        <div class="panel panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th hidden>id</th>
+                    <th>Nom / Prenom</th>
+                    <th>Nom affaire</th>
+                    <th>Relatif à</th>
+                    <th>Assigné(e) à</th>
+                    <th>Date d'échéance </th>
+                    <th>Montant </th>
+                    <th>Pahse de vente</th>
+                    <th>Probabilité</th>
+                </tr>
+                <tr *ngFor="let c of pageAffaire?.content">
+                    <td hidden>{{c.id}}</td>
+                    <td>{{c.contact.nom+" "+c.contact.prenom}}</td>
+                    <td>{{c.nomAffaire}}</td>
+                    <td>{{c.relatifA}}</td>
+                    <td>{{c.assigneA}}</td>
+                    <td>{{c.dateEcheance | date : format : timezone }}</td>
+                    <td>{{c.montant }}</td>
+                    <td>{{c.phaseVente }}</td>
+                    <td>{{c.probabilite }}%</td>
+                </tr>
+            </table>
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+                        <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    </div>

@@ -1,0 +1,64 @@
+<nav class="navbar navbar-inverse" style="background-color: dimgrey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+        </div>
+        <ul class="nav navbar-nav member-actions">
+            <li class="active"><a routerLink="/home" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+            <li ><a routerLink="/cart"><font color="white"><b>Shopping cart</b></font></a></li>
+            <li ><a><font color="white" routerLink="/agenda"><b>Agenda</b></font></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div *ngIf="product != null " class="row pt-5">
+        <div class="col-md-7">
+            <div class="left-column">
+                <img class="img-responsive" style="width: 95%" src="data:image/png;base64,{{product.productimage}}" alt="{{ product.productid  }}">
+            </div>
+        </div>
+        <div class="col-md-4 mr-auto">
+            <!-- Right Column -->
+            <div class="right-column">
+
+                <!-- Product Description -->
+                <div class="product-description">
+                    <span>{{ product.productid }}</span>
+                    <p> {{ product.designation }}</p>
+                </div>
+
+                <!-- Product Configuration -->
+                <div class="product-configuration">
+
+                    <!-- Cable Configuration -->
+                    <div class="cable-config">
+                        <span>Amount</span>
+
+                        <div class="cable-choose">
+                            <input #amount type="number" placeholder="Amount" min="1" value="1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Pricing -->
+                <div class="product-price">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>${{ product.price }}</span>
+                        </div>
+                        <div class="col-md-8">
+                            <button class="btn btn-primary" (click)="addToCart(amount)"
+                                    style="font-size: 20px;">Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="errMsg" class="alert alert-danger errMsg">{{errMsg}}</div>
+            </div>
+        </div>
+    </div>
+</div>

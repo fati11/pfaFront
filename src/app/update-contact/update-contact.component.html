@@ -1,0 +1,195 @@
+<div style="background-color: #F8F8F8">
+    <nav class="navbar navbar-inverse" style="background-color: dimgrey">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+                <li ><a routerLink="/prospect"><font color="white"><b>Prospect</b></font></a></li>
+                <li class="active"><a routerLink="/contact"><font color="white"><b>Contact</b></font></a></li>
+                <li><a routerLink="/nouveauProduct"><font color="white"><b>Produit</b></font></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container spacer">
+        <div class="panel panel-primary" *ngIf="mode==1">
+            <div class="panel panel-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h4 style="color: orange"><b>infos :</b></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Prénom</label>
+                        <input type="text" class="form-control"  placeholder="saisir le prénom" [(ngModel)]="contact.prenom"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Nom</label>
+                        <input type="text" class="form-control" placeholder="saisir le nom" name="nom" [(ngModel)]="contact.nom"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Email</label>
+                    <input type="email" class="form-control" placeholder="saisir votre email" [(ngModel)]="contact.email" />
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Téléphone</label>
+                    <input type="text"  class="form-control" placeholder="saisir le numéro de tel" name="telephone" [(ngModel)]="contact.telephone" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label" >Sexe</label>
+                    <br/>
+                    <div>
+                        <input id="female" type="radio" value="female" [(ngModel)]="contact.sexe">
+                        <label class=" radio-inline" for="female">Femme</label>
+                        <input id="male" type="radio" value="male" [(ngModel)]="contact.sexe">
+                        <label class=" radio-inline" for="male">Homme</label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">FAX</label>
+                    <input type="text" class="form-control"  placeholder="saisir le num du fax" [(ngModel)]="contact.fax"/>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Date de Naissance :</label>
+                    <input type="date" class="form-control" placeholder="saisir votre date de naissance"  [(ngModel)]="contact.dateNaissance"   />
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Assigné à :</label>
+                    <input type="text" class="form-control" placeholder="assigné à "  [(ngModel)]="contact.assigneA"/>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Fonction</label>
+                    <input type="text" class="form-control"  placeholder="saisir le secteur" [(ngModel)]="contact.fonction"/>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Source du prospect</label>
+                    <select class="form-control" [(ngModel)]="contact.sourceProspect">
+                        <option value=appelDirecte>Appel directe</option>
+                        <option value=clientExistant>Client existant</option>
+                        <option value=employe>Employé</option>
+                        <option value=partenaire>Partenaire</option>
+                        <option value=relationPublique>Relation publique</option>
+                        <option value=emailDirecte>Email directe</option>
+                        <option value=conference>Conférence</option>
+                        <option value=siteWeb>Site web</option>
+                        <option value=boucheAoreille>Bouche à oreille</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Type</label>
+                    <select class="form-control" [(ngModel)]="contact.type">
+                        <option value=client>Client</option>
+                        <option value=prospect>Prospect</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Intéréssé(e) par :</label>
+                    <input type="text"  class="form-control" placeholder="votre titre" [(ngModel)]="contact.interessePar" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="contact.password"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container spacer">
+    <div class="panel panel-success">
+        <div class="panel panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h4 style="color: orange"><b>Adresse:</b></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Adresse</label>
+                        <input type="text" class="form-control" placeholder="saisir votre adresse"  [(ngModel)]="contact.adressePrincipal" />
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Ville</label>
+                        <input type="text" class="form-control"  placeholder="saisir votre ville" [(ngModel)]="contact.ville"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Pays</label>
+                        <select class="form-control"  [(ngModel)]="contact.pays" >
+                            <option value=Maroc>Maroc</option>
+                            <option value=Algérie>Algérie</option>
+                            <option value=France>France</option>
+                            <option value=Italie>Italie</option>
+                            <option value=Espagne>Espagne</option>
+                            <option value=Turkie>Turkie</option>
+                            <option value=Russie>Russie</option>
+                            <option value=Egypte>Egypte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Code Postale</label>
+                        <input type="text"  class="form-control" placeholder="votre code postale" [(ngModel)]="contact.codePostale" />
+                    </div>
+                </div>
+
+                <br/>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container spacer">
+    <div class="panel panel-success">
+        <div class="panel panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h4 style="color: orange"><b>Notes:</b></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Informations Complémentaires</label>
+                        <textarea class="form-control" rows="4" placeholder="Informations Complémentaires" [(ngModel)]="contact.description"></textarea>
+                    </div></div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-warning center-block"  style="width:200px" (click)="onUpdate()"><span class="glyphicon glyphicon-plus"></span>Modifier</button>
+
+</div>
+

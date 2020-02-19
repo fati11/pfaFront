@@ -1,0 +1,216 @@
+<div style="background-color: #F8F8F8">
+<nav class="navbar navbar-inverse" style="background-color: dimgrey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+            <li class="active"><a routerLink="/prospect"><font color="white"><b>Prospect</b></font></a></li>
+            <li><a routerLink="/contact"><font color="white"><b>Contact</b></font></a></li>
+            <li><a><font routerLink="/nouveauProduct"  color="white"><b>Produit</b></font></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container spacer">
+    <div class="panel panel-primary">
+        <div class="panel panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h4 style="color: orange"><b>infos :</b></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Prénom</label>
+                        <input type="text" class="form-control"  placeholder="saisir le prénom" [(ngModel)]="prospect.prenom"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Nom</label>
+                        <input type="text" class="form-control" placeholder="saisir le nom" name="nom" [(ngModel)]="prospect.nom"/>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Email</label>
+                        <input type="email" class="form-control" placeholder="saisir votre email" [(ngModel)]="prospect.email"  (change)="emailErreur()"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">Téléphone</label>
+                        <input type="text"  class="form-control" placeholder="saisir le numéro de tel" name="telephone" [(ngModel)]="prospect.telephone" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label" >Sexe</label>
+                        <br/>
+                        <div>
+                            <input id="female" type="radio" value="female" [(ngModel)]="prospect.sexe">
+                            <label class=" radio-inline" for="female">Femme</label>
+                            <input id="male" type="radio" value="male" [(ngModel)]="prospect.sexe">
+                            <label class=" radio-inline" for="male">Homme</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label">FAX</label>
+                        <input type="text" class="form-control"  placeholder="saisir le num du fax" [(ngModel)]="prospect.fax"/>
+                    </div>
+                </div>
+                <br/>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Date de Naissance</label>
+                    <input type="date" class="form-control" placeholder="saisir le nom de la société"  [(ngModel)]="prospect.dateNaissance"   />
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Assigné à :</label>
+                    <input type="text" class="form-control" placeholder="assigné à "  [(ngModel)]="prospect.assigneA"/>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Secteur</label>
+                    <input type="text" class="form-control"  placeholder="saisir le secteur" [(ngModel)]="prospect.secteur"/>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Source du prospect</label>
+                    <select class="form-control" [(ngModel)]="prospect.sourceProspect">
+                        <option value=appelDirecte>Appel directe</option>
+                        <option value=clientExistant>Client existant</option>
+                        <option value=employe>Employé</option>
+                        <option value=partenaire>Partenaire</option>
+                        <option value=relationPublique>Relation publique</option>
+                        <option value=emailDirecte>Email directe</option>
+                        <option value=conference>Conférence</option>
+                        <option value=siteWeb>Site web</option>
+                        <option value=boucheAoreille>Bouche à oreille</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">statut</label>
+                    <select class="form-control" [(ngModel)]="prospect.statut">
+                        <option value=nouveau>Nouveau</option>
+                        <option value=assigne>Assigné</option>
+                        <option value=enCours>En cours</option>
+                        <option value=converti>Converti</option>
+                        <option value=reactive>Réactivé</option>
+                        <option value=mort>Mort</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Titre</label>
+                    <input type="text"  class="form-control" placeholder="votre titre" [(ngModel)]="prospect.titre" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Notes</label>
+                    <select class="form-control" [(ngModel)]="prospect.note">
+                        <option value=acquis>Acquis</option>
+                        <option value=actif>Actif</option>
+                        <option value=marcheAnnule>Marché annulé</option>
+                        <option value=projetAnnule>Projet annulé</option>
+                        <option value=eteint>Eteint</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="prospect.password"/>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+<div class="container spacer">
+    <div class="panel panel-primary">
+<div class="panel panel-body">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-1">
+                <h4 style="color: orange"><b>Adresse:</b></h4>
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Adresse</label>
+                <input type="text" class="form-control" placeholder="saisir votre adresse"  [(ngModel)]="prospect.adressePrincipale" />
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Ville</label>
+                <input type="text" class="form-control"  placeholder="saisir votre ville" [(ngModel)]="prospect.ville"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Pays</label>
+                <select class="form-control"  [(ngModel)]="prospect.pays" >
+                    <option value=Maroc>Maroc</option>
+                    <option value=Algérie>Algérie</option>
+                    <option value=France>France</option>
+                    <option value=Italie>Italie</option>
+                    <option value=Espagne>Espagne</option>
+                    <option value=Turkie>Turkie</option>
+                    <option value=Russie>Russie</option>
+                    <option value=Egypte>Egypte</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Code Postale</label>
+                <input type="text"  class="form-control" placeholder="votre code postale" [(ngModel)]="prospect.codePostale" />
+            </div>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+                <label class="control-label">Etat/Dép</label>
+                <input type="text"  class="form-control" placeholder="état/dép" [(ngModel)]="prospect.etatDep" />
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+    <div class="container spacer">
+        <div class="panel panel-primary">
+            <div class="panel panel-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h4 style="color: orange"><b>Notes:</b></h4>
+                        </div>
+    <div class="col-md-5">
+        <label class="control-label">Informations Complémentaires</label>
+        <textarea class="form-control" rows="4" placeholder="Informations Complémentaires"></textarea>
+    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-warning center-block"  style="width:200px" (click)="onSave()"><span class="glyphicon glyphicon-plus"></span>Enregistrer</button>
+
+</div>

@@ -1,0 +1,57 @@
+<div style="background-color: #F8F8F8">
+    <nav class="navbar navbar-inverse" style="background-color: dimgrey">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+            </div>
+            <ul class="nav navbar-nav member-actions">
+                <li class="active"><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+                <li ><a routerLink="/prospect"><font color="white"><b>Prospect</b></font></a></li>
+                <li ><a><font color="white" routerLink="/contact"><b>Contact</b></font></a></li>
+                <li><a routerLink="/nouveauProduct" color="white">Produit</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container spacer">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Mes Rendez-vous</h4>
+            </div>
+            <div class="panel panel-body">
+
+
+                <table class="table table-striped">
+                    <tr>
+                        <th hidden>id</th>
+                        <th>Lieu</th>
+                        <th>Description</th>
+                        <th>Duree</th>
+                        <th>Heure de début </th>
+                        <th>Date du RDV </th>
+                    </tr>
+                    <tr *ngFor="let c of pageRDV?.content">
+                        <td hidden>{{c.id}}</td>
+                        <td>{{c.lieu}}</td>
+                        <td>{{c.description}}</td>
+                        <td>{{c.duree}}</td>
+                        <td>{{c.time}}</td>
+                        <td>{{c.date | date : format : timezone }}</td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+                <div class="container">
+                    <ul class="nav nav-pills">
+                        <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+                            <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <br/>
+            </div>
+        </div>
+</div>

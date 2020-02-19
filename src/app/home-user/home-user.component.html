@@ -1,0 +1,39 @@
+<div>
+<nav class="navbar navbar-inverse" style="background-color: dimgrey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+        </div>
+        <ul class="nav navbar-nav member-actions">
+            <li class="active" ><a routerLink="/home" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+            <li ><a routerLink="/home/cart"><font color="white"><b>Shopping cart</b></font></a></li>
+            <li ><a><font color="white" routerLink="/agenda"><b>Agenda</b></font></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    <div class="form-group">
+        <div class="row">
+        <div class="input-group">
+            <div class="col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="key" placeholder="Rechercher un produit"  aria-describedby="basic-addon2">
+            </div>
+            <div class="col-md-3">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="getProducts(key)" type="button">Rechercher</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="row pt-2" *ngIf="products">
+        <div class="col-md-3 align-left" *ngFor="let product of products">
+            <app-product [product]="product" >Loading...</app-product>
+        </div>
+    </div>
+</div>
+</div>

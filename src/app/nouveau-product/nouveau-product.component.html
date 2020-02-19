@@ -1,0 +1,97 @@
+<div style="background-color: #F8F8F8">
+    <nav class="navbar navbar-inverse" style="background-color: dimgrey">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><font color="white"><b>CRM</b></font></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"><font color="white"><b> Home</b></font></a></li>
+                <li ><a routerLink="/prospect"><font color="white"><b>Prospect</b></font></a></li>
+                <li><a routerLink="/contact"><font color="white"><b>Contact</b></font></a></li>
+                <li class="active"><a><font routerLink="/nouveauProduct"  color="white"><b>Produit</b></font></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button class="mybtn btn btn-secondary" (click)="show()" *ngIf="!showAdd">Click to Add</button>
+            <button class="mybtn btn btn-secondary" (click)="hide()" *ngIf="showAdd">Click to hide</button>
+        </div>
+    </div>
+    <form class="form-horizontal shadow p-3 mb-5 bg-white rounded " #f="ngForm" (ngSubmit)="f.form.valid && addProd(productid, quan,price,prodname,image)"
+          *ngIf="showAdd">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Product Reference" #productid
+                           ngModel name="productid">
+                    <span *ngIf="requiredFields.ref" class="invalid-input"> ref is required</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Product Name" #prodname
+                           ngModel name="prodname">
+                    <span *ngIf="requiredFields.desi" class="invalid-input"> Designation is required</span>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="quantity" name="quan" #quan
+                           ngModel>
+                    <span *ngIf="requiredFields.quantity" class="invalid-input"> Quantity invalid</span>
+
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="price" name="price" #price
+                           ngModel>
+                    <span *ngIf="requiredFields.price" class="invalid-input"> Price invalid</span>
+
+                </div>
+                <div class="form-group">
+                    <input type="file" class="form-control" placeholder="Product Picture" #image
+                           accept="image/*" name="image"
+                           (change)="handleFileInput($event.target.files)"/>
+                    <span *ngIf="requiredFields.image" class="invalid-input"> Picture is required</span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4 class="text-center">Image preview</h4>
+                <img [src]="imageUrl" style="width:400px;height: 300px;">
+
+            </div>
+
+        </div>
+        <div *ngIf="errMsg" class="alert alert-danger">{{errMsg}}</div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="submit" class=" btn btn-primary" value="Add Product">
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 align-left" *ngFor="let product of products">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.productid}}</h5>
+                    <img src="data:image/png;base64,{{product.productimage}}" class="img-responsive"
+                         style="width:250px;height: 200px;" alt="Image"/>
+                    <p class="card-text"> {{product.designation}}<span class="pull-right">{{product.price}}$</span></p>
+                    <input type="hidden" value={{product.productid}} #prdid>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary" (click)="edit(prdid)">Edit</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger"
+                                    (click)="delProd(prdid)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

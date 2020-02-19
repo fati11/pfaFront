@@ -1,0 +1,94 @@
+<nav class="navbar navbar-inverse" style="background-color: dimgrey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">CRM</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a routerLink="/homeAdmin" class="glyphicon glyphicon-home"> <font color="white"><b>Home</b></font></a></li>
+            <li><a routerLink="/prospect" ><font color="white"><b>Prospect</b></font></a></li>
+            <li class="active"><a  routerLink="/contact"><font color="white"><b>Contact</b></font></a></li>
+            <li><a routerLink="/nouveauProduct" ><font color="white"><b>Produit</b></font></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a   (click)="logOut()"  class="btn-white btn-small">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container spacer">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>Les contacts</h4>
+        </div>
+        <div class="panel panel-body">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-5">
+                        <input type="nom" class="form-control" placeholder="Nom" [(ngModel)]="motCle"/>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="btn btn-warning" (click)="chercher()"><span class="glyphicon glyphicon-search"></span>  Filter</button>
+                    </div>
+                    <div class="col-md-5">
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th hidden>id</th>
+                    <th>Nom / Prenom</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Statut</th>
+                    <th>Pays</th>
+                    <th>Date de Naissance</th>
+                    <th>Intérèssé(e) par</th>
+                    <th>Assigné à</th>
+                </tr>
+                <tr *ngFor="let c of pageContact?.content">
+                    <td hidden>{{c.id}}</td>
+                    <td>{{c.nom+" "+c.prenom}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.mobile}}</td>
+                    <td>{{c.statut}}</td>
+                    <td>{{c.pays}}</td>
+                    <td>{{c.dateNaissance | date : format : timezone }}</td>
+                    <td>{{c.interessePar}}</td>
+                    <td><span class="glyphicon glyphicon-user">{{c.assigneA}}</span></td>
+                    <td>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button  class="btn btn-warning center-block" (click)="onUpdate(c.id)"><span class="glyphicon glyphicon-pencil"></span></button> </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-danger center-block" (click)="onDeleteProspect(c)"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary center-block" (click)="onAffiche(c.id)"><span class="glyphicon glyphicon-new-window"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+                        <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+            <button class="btn btn-warning center-block" routerLink="/nouveauContact" routerLinkActive="active"><span class="glyphicon glyphicon-plus"></span>Ajouter un contact </button>
+
+        </div>
+    </div>
+</div>
+

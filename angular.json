@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css","../pfaFront/node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
           },
@@ -89,9 +89,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css","../pfaFront/node_modules/bootstrap/dist/css/bootstrap.css",
+              "../pfaFront/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "../pfaFront/node_modules/bootstrap/dist/js/bootstrap.js/bootstrap.min.js"
             ],
-            "scripts": []
+            "scripts": [
+             "../pfaFront/node_modules/jquery/dist/jquery.min.js",
+              "../pfaFront/node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           }
         },
         "lint": {
